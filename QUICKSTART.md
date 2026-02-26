@@ -1,6 +1,6 @@
 # Training Code Quick Start
 
-快速启动StreamVLN训练的最简步骤。
+快速启动BudVLN训练的最简步骤。
 
 ## ⚡ 5分钟开始训练
 
@@ -95,4 +95,4 @@ FileNotFoundError: checkpoints/StreamVLN_Video_...
 
 ---
 
-**开始你的StreamVLN训练之旅吧！** 🚀
+**开始你的BudVLN训练之旅吧！** 🚀

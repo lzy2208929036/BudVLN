@@ -1,6 +1,6 @@
-# StreamVLN Training Code
+# BudVLN Training Code
 
-本目录包含 StreamVLN 的完整训练代码，可独立运行。
+本目录包含 BudVLN 的完整训练代码，基于 [StreamVLN](https://github.com/InternRobotics/StreamVLN) 开发，可独立运行。
 
 ## 📁 目录结构
 
@@ -32,7 +32,7 @@ opensource_training/                   # 项目根目录
 │   ├── streamvln_eval.py              # 评估脚本
 │   ├── streamvln_agent.py             # Agent推理
 │   ├── args.py                        # 参数定义
-│   ├── model/                         # StreamVLN模型
+│   ├── model/                         # BudVLN模型
 │   │   └── stream_video_vln.py
 │   ├── rewards/                       # 奖励函数
 │   │   └── vln_reward.py
@@ -71,8 +71,8 @@ opensource_training/                   # 项目根目录
 
 ```bash
 # 创建 conda 环境
-conda create -n streamvln python=3.9
-conda activate streamvln
+conda create -n budvln python=3.9
+conda activate budvln
 
 # 安装 habitat-sim
 conda install habitat-sim==0.2.4 withbullet headless -c conda-forge -c aihabitat
@@ -113,7 +113,7 @@ mkdir -p checkpoints
 # 将模型放到 checkpoints/StreamVLN_Video_qwen_1_5_r2r_rxr_envdrop_scalevln_v1_3
 ```
 
-模型下载地址请参考 [主仓库 Model Zoo](https://github.com/InternRobotics/StreamVLN#-model-zoo)。
+模型下载地址请参考 [StreamVLN Model Zoo](https://github.com/InternRobotics/StreamVLN#-model-zoo)。
 
 #### 2.4 合并多数据集（可选）
 
@@ -216,23 +216,12 @@ $$\mathcal{L} = \mathcal{L}_{GRPO} + \lambda(t) \cdot \mathcal{L}_{SFT}$$
 | `--offtrack_dist_thresh` | 3.0m | 偏离距离阈值 |
 | `--num_updates` | 500 | 训练更新次数 |
 | `--learning_rate` | 5e-7 | 学习率 |
-| `--group_size` | 2 | GRPO采样数 |
 
 更多参数说明请查看 [docs/PARAMETERS_EXPLAINED.md](docs/PARAMETERS_EXPLAINED.md)。
 
-## 📊 预期结果
-
-使用混合训练 500 次更新后，在 R2R val_unseen 上：
-
-| 指标 | 预期值 |
-|------|--------|
-| Success Rate (SR) | ~65-70% |
-| SPL | ~55-60% |
-| 训练时间 | ~3-4天（单卡A100） |
-
 ## ⚠️ 环境要求
 
-- **GPU**: NVIDIA V100/A100（≥40GB显存）
+- **GPU**: NVIDIA H800（≥40GB显存）
 - **Python**: 3.9+
 - **CUDA**: 11.7+
 - **存储**: ≥500GB（场景数据 + 模型）
@@ -240,11 +229,11 @@ $$\mathcal{L} = \mathcal{L}_{GRPO} + \lambda(t) \cdot \mathcal{L}_{SFT}$$
 ## 📝 引用
 
 ```bibtex
-@article{streamvln2025,
-  title={StreamVLN: Streaming Vision-and-Language Navigation via SlowFast Context Modeling},
-  author={Wei, Meng and Wan, Chenyang and Yu, Xiqian and Wang, Tai and Yang, Yuqiang and Mao, Xiaohan and Zhu, Chenming and Cai, Wenzhe and Wang, Hanqing and Chen, Yilun and Liu, Xihui and Pang, Jiangmiao},
-  journal={arXiv preprint arXiv:2507.05240},
-  year={2025}
+@article{he2026nipping,
+  title={Nipping the Drift in the Bud: Retrospective Rectification for Robust Vision-Language Navigation},
+  author={He, Gang and Liu, Zhenyang and Xu, Kepeng and Xu, Li and Qiao, Tong and Yu, Wenxin and Wu, Chang and Xie, Weiying},
+  journal={arXiv preprint arXiv:2602.06356},
+  year={2026}
 }
 ```
 

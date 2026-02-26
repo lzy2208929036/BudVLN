@@ -1,6 +1,6 @@
-# StreamVLN Training Guide
+# BudVLN Training Guide
 
-本指南提供 StreamVLN 训练的完整流程说明。
+本指南提供 BudVLN 训练的完整流程说明。
 
 ## 🎯 训练流程概览
 
@@ -24,8 +24,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-repo/StreamVLN.git
-cd StreamVLN
+git clone https://github.com/lzy2208929036/BudVLN.git
+cd BudVLN
 
 # 安装Python依赖
 pip install -r opensource_training/requirements.txt
@@ -85,7 +85,7 @@ python merge_r2r_rxr_envdrop_scalevln.py \
 mkdir -p checkpoints
 cd checkpoints
 
-# 下载预训练的StreamVLN模型
+# 下载预训练模型
 # 具体下载方式请参考主README
 ```
 

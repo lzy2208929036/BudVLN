@@ -1,6 +1,6 @@
-# StreamVLN Training Parameters Guide
+# BudVLN Training Parameters Guide
 
-本文档详细说明 StreamVLN 训练脚本中的所有参数。
+本文档详细说明 BudVLN 训练脚本中的所有参数。
 
 ## 📚 目录
 
