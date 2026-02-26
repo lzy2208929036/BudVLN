@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BudVLN: Retrospective Rectification for Robust Vision-Language Navigation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+    }
+    .title.is-1 {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .author-block {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 1.2rem;
+    }
+    .institution-block {
+      font-size: 1rem;
+      color: #555;
+    }
+    .link-block {
+      margin: 10px 5px;
+    }
+    .publication-links {
+      margin-top: 20px;
+    }
+    .abstract-text {
+      text-align: justify;
+    }
+    .figure-caption {
+      text-align: justify;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 15px;
+      margin-bottom: 30px;
+    }
+    .image-container {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .bibtex-container {
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      text-align: left;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Nipping the Drift in the Bud: Retrospective Rectification for Robust Vision-Language Navigation</h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Gang He<sup>1</sup>,</span>
+            <span class="author-block">Zhenyang Liu<sup>1</sup>,</span>
+            <span class="author-block">Kepeng Xu<sup>1</sup>,</span>
+            <span class="author-block">Li Xu<sup>1</sup>,</span>
+            <span class="author-block">Tong Qiao<sup>1</sup>,</span>
+            <span class="author-block">Wenxin Yu<sup>2</sup>,</span>
+            <span class="author-block">Chang Wu<sup>1</sup>,</span>
+            <span class="author-block">Weiying Xie<sup>1</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-authors" style="margin-top: 10px;">
+            <span class="institution-block"><sup>1</sup>Xidian University</span><br>
+            <span class="institution-block"><sup>2</sup>Southwest University of Science and Technology</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/html/2602.06356v1" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2602.06356v1" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <div class="image-container">
+          <img src="figure1.png" alt="Illustration of instruction-state misalignment">
+        </div>
+        <div class="figure-caption">
+          <strong>Figure 1:</strong> Illustration of instruction-state misalignment. Standard DAgger forces a recovery from the error state, causing backward-correcting actions that fail to establish a semantic connection with the instruction. In contrast, BudVLN employs retrospective rectification to synthesize a forward-looking demonstration that remains strictly aligned with the natural language instruction.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Vision-Language Navigation (VLN) requires embodied agents to interpret natural language instructions and navigate through complex continuous 3D environments. However, the dominant imitation learning paradigm suffers from exposure bias, where minor deviations during inference lead to compounding errors.
+          </p>
+          <p>
+            While DAgger-style approaches attempt to mitigate this by correcting error states, we identify a critical limitation: <strong>Instruction-State Misalignment</strong>. Forcing an agent to learn recovery actions from off-track states often creates supervision signals that semantically conflict with the original instruction.
+          </p>
+          <p>
+            In response to these challenges, we introduce <strong>BudVLN</strong>, an online framework that learns from on-policy rollouts by constructing supervision to match the current state distribution. BudVLN performs retrospective rectification via counterfactual re-anchoring and decision-conditioned supervision synthesis, using a geodesic oracle to synthesize corrective trajectories that originate from valid historical states, ensuring semantic consistency. Experiments on the standard R2R-CE and RxR-CE benchmarks demonstrate that BudVLN consistently mitigates distribution shift and achieves state-of-the-art performance in both Success Rate and SPL.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Methodology: The BudVLN Framework</h2>
+        <div class="content has-text-justified">
+          <p>
+            To address the challenges of exploration efficiency and adversarial supervision, BudVLN employs an Adaptive Mutual Exclusion Strategy to dynamically bifurcate the training process based on the agent's real-time proficiency.
+          </p>
+        </div>
+        
+        <div class="image-container">
+          <img src="figure2.png" alt="Overview of the BudVLN training framework">
+        </div>
+        <div class="figure-caption">
+          <strong>Figure 2:</strong> Overview of the BudVLN training framework. For a given instruction, a greedy probe first evaluates the agent's proficiency. When proficient, the framework routes to the optimality seeking pathway via GRPO. Conversely, upon failure, it triggers the rectification pathway, synthesizing alignment-preserving supervision via valid historical states.
+        </div>
+        
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Optimality-Seeking Exploration via GRPO:</strong> When the probe confirms proficiency, we optimize for shorter, more efficient paths using Group Relative Policy Optimization, bypassing Supervised Fine-Tuning.</li>
+            <li><strong>Retrospective Rectification (SFT):</strong> For hard samples, we perform a History-Aware Rollback. We identify the best waypoint achieved, retain the valid visual history prefix, and use an oracle planner to generate the optimal action sequence to the goal. This teaches the agent how to avert errors from the outset without Instruction-State Misalignment.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Qualitative Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            Compared to baseline methods that fail to ground instructions and get stuck during deviations, BudVLN remains robust at critical turning points, effectively avoiding failure modes and preserving history-action consistency.
+          </p>
+        </div>
+        
+        <div class="image-container">
+          <img src="figure3.png" alt="Qualitative comparison between Baseline and BudVLN">
+        </div>
+        <div class="figure-caption">
+          <strong>Figure 3:</strong> Qualitative comparison between the Baseline and BudVLN. The Baseline agent fails to ground the instruction, leading to a deviation. BudVLN successfully navigates the complex environment, demonstrating superior robustness.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <div class="bibtex-container">
+<pre><code>@misc{he2026nipping,
+    title={Nipping the Drift in the Bud: Retrospective Rectification for Robust Vision-Language Navigation},
+    author={Gang He and Zhenyang Liu and Kepeng Xu and Li Xu and Tong Qiao and Wenxin Yu and Chang Wu and Weiying Xie},
+    year={2026},
+    eprint={2602.06356},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO}
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. 
+            Template adapted from <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
